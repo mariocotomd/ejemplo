@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery</title>
+
+    <script src="js/jquery-3.3.1.js"></script>
+
+    <script type="text/javascript">
+
+//        var email= 'me@exaple.com';
+//
+//        validateMail(email);
+//
+//        function validateMail(email) {
+//            expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+//            if ( !expr.test(email) ){
+//                alert("Error: La dirección de correo " + email + " es incorrecta.");
+//                return false;
+//            }
+//        }
+
+//        function validateMail(correo){
+//            //Creamos un objeto
+//
+//                var email = $('#correo');
+//                var example = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+//
+//                if(email == example ){
+//
+//                    return false;
+//                }else  {
+//                    $('#correo').css('colo': ,'#f00');
+//                }
+//
+////            object=document.getElementById(correo);
+////            valueForm=object.value;
+////
+////            // Patron para el correo
+////            if(valueForm.search(patron)==0)
+////            {
+////                //Mail correcto
+////                object.style.color="#000";
+////                return;
+////            }
+////            //Mail incorrecto
+////            object.style.color="#f00";
+////        }
+//
+//        function checkEmail() {
+//
+//            var email = document.getElementById('correo');
+//            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+//
+//            if(!filter.test(email.value)) {
+//                document.getElementById('correo').style.color= "#000";
+//                return false;
+//            }else {
+//                document.getElementById('correo').style.color= "#f00";
+//            }
+//        }
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<style>
+
+    body {
+        font-family: Arial;
+    }
+
+    .titulo-principal {
+        text-align: left;
+    }
+
+    .mensaje {
+        display: none;
+        position: absolute;
+        top: -9px;
+        right: 62px;
+        background-color: red;
+        padding: 5px;
+        -webkit-border-radius: 5px;
+        -webkit-border-bottom-left-radius: 0;
+        -moz-border-radius: 5px;
+        -moz-border-radius-bottomleft: 0;
+        border-radius: 15px;
+        border-bottom-left-radius: 0;
+        color: #fff;
+    }
+
+    .contacto {
+        margin: 0 auto;
+        width: 980px;
+        padding-top: 32px;
+    }
+
+    .contacto .box-input {
+        /* overflow: hidden; */
+        margin-bottom: 15px;
+        position: relative;
+        min-height: 37px;
+    }
+
+    .contacto label {
+        width: 17%;
+        float: left;
+        margin-top: 9px;
+    }
+
+    .contacto textarea {
+        min-height: 149px;
+    }
+
+    .contacto textarea,
+    .contacto input {
+        width: 77%;
+        float: left;
+        border-radius: 5px;
+        border: 1px solid #000;
+        padding: 5px;
+    }
+
+    .contacto input {
+        height: 30px;
+    }
+
+    input#butonsubmit {
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 6px 27px;
+        font-size: 16px;
+        background-color: #000;
+        color: #fff;
+        /*cursor: pointer;*/
+        width: auto;
+    }
+
+    input.desabilitado {
+        background-color: darkgray!important;
+        color: #eee!important;
+        border: darkgray!important;
+        cursor: not-allowed;
+    }
+
+    textarea.campovacio,
+    input.campovacio {
+         border: 1px solid red;
+     }
+
+    textarea.campolleno,
+    input.campolleno {
+        border: 1px solid green;
+    }
+
+    #mensjeenviado {
+        display: none;
+    }
+
+</style>
+
+
+<body>
+
+    <form class="contacto">
+
+        <h1 class="titulo-principal"> Formulario de Contacto</h1>
+
+        <div class="box-input">
+            <label>Nombre</label>
+            <input id='nombre' type='text' value='' required>
+            <span id="mnombre" class="mensaje">Campo Nombre obligatorio</span>
+        </div>
+
+        <div class="box-input">
+            <label>Apellido</label>
+            <input id='apellido' type='text' value='' required>
+            <span id="mpellido" class="mensaje">Campo Apellido obligatorio</span>
+
+        </div>
+
+        <div class="box-input">
+            <label>Asunto</label>
+            <input id='asunto' type='text' value='' required>
+            <span id="masunto" class="mensaje">Campo Asunto obligatorio</span>
+
+        </div>
+
+        <div class="box-input">
+            <label>Teléfono</label>
+            <input id='telefono' type='text' value='' required>
+            <span id="mtelefono" class="mensaje">Campo Teléfono obligatorio</span>
+            <span id="numerotelefono" class="mensaje">Campo Teléfono obligatorio, Campo Numerico tiene que llevar 8 digitos</span>
+
+        </div>
+
+        <div class="box-input">
+            <label>Correo Eléctronico</label>
+            <input id='correo' name='mail' type="text" value='' pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+            <span id="mcorreo" class="mensaje">Campo Correo Eléctronico obligatorio</span>
+            <span id="mcorreoinvalido" class="mensaje">Campo Correo Eléctronico es incorrecto</span>
+        </div>
+
+        <div class="box-input">
+            <label>Mensaje</label>
+            <textarea id='mensajes'></textarea>
+            <span id="mmensaje" class="mensaje">Campo Mensjae es Obligatorio</span>
+        </div>
+        <input id="butonsubmit" class='boton' type='submit' value='Enviar'></input>
+        <span id="mensjeenviado">Mensaje enviado</span>
+    </form>
+
+    <script src="js/custom.js"></script>
+
+
+</body>
+</html>
